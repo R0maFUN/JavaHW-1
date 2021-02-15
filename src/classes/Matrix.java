@@ -12,17 +12,28 @@ public class Matrix/*<T>*/ {
     public Matrix(int xdim, int ydim) {
         this(xdim, ydim, new Complex(0));
     }
+
+    public Matrix(int xdim, int ydim, double val) {
+        this(xdim, ydim, new Complex(val));
+    }
+
     public Matrix(int xdim, int ydim, Complex val) {
         values = new Complex[ydim][xdim];
         for(int i = 0; i < ydim; ++i)
             for(int j = 0; j < xdim; ++j)
-                this.values[i][j] = val;
+                this.values[i][j] = new Complex(val);
         this.xDim = xdim;
         this.yDim = ydim;
     }
+
     public void set(int i, int j, Complex value) {
         values[i][j] = value;
     }
+
+    public void set(int i, int j, double value) {
+        values[i][j] = new Complex(value);
+    }
+
     public Complex get(int i , int j) {
         return values[i][j];
     }
@@ -75,6 +86,17 @@ public class Matrix/*<T>*/ {
             for(int j = 0; j < xDim; ++j)
                 values[i][j] = values[i][j].div(value);
         return this;
+    }
+
+    public void print() {
+        for(int i = 0; i < yDim; ++i) {
+            for(int j = 0; j < xDim; ++j) {
+                values[i][j].print();
+                System.out.print(" ");
+            }
+            System.out.print("\n");
+        }
+        System.out.print("\n");
     }
 
 }

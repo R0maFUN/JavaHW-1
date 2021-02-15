@@ -12,6 +12,11 @@ public class Complex {
         this.im = i;
     }
 
+    public Complex(Complex copy) {
+        this.re = copy.re;
+        this.im = copy.im;
+    }
+
     public Complex sum(Complex val) {
         this.re += val.re;
         this.im += val.im;
@@ -37,6 +42,6 @@ public class Complex {
     }
 
     public void print() {
-        System.out.println("(" + this.re + ") "+ (this.im > 0 ? "+" : "") + this.im + "i" );
+        System.out.print("(" + this.re + ") "+ ( this.im != 0 ? ((this.im > 0 ? "+" : "") + this.im + "i") : "") );
     }
 }
